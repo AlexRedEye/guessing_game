@@ -1,6 +1,6 @@
 # Guessing Game
 
-A classic number guessing game implemented in Rust with multiple difficulty levels.
+A classic number guessing game implemented in Rust with multiple difficulty levels and personal best tracking.
 
 > **AI Disclaimer:** All code was written by me, but this README was written by Copilot.
 
@@ -16,15 +16,18 @@ This project started as a learning exercise from Chapter 2 of [The Rust Programm
 - Loops and control flow
 - Comparing values
 - Function organization
+- File I/O for persistent data
 
 ## What It Does
 
-The program presents a menu where you can choose from three difficulty levels:
+The program launches under the **PocketFriends.Org** banner and presents a menu where you can choose from three difficulty levels:
 - **Easy:** Guess a number between 1 and 50
 - **Medium:** Guess a number between 1 and 100
 - **Hard:** Guess a number between 1 and 500
 
 After selecting a difficulty, the game generates a random secret number within the chosen range. You'll then be prompted to guess the number. After each guess, the game tells you whether your guess was too high or too low. The game continues until you guess correctly, at which point it displays the number of attempts it took you to win.
+
+Your best attempt count for each difficulty is saved to a local file (`pb.pf`) and displayed in the menu so you can try to beat your previous scores.
 
 ## How to Build and Run
 
@@ -52,11 +55,18 @@ cargo run
 4. The game will tell you if your guess is too high or too low
 5. Keep guessing until you find the secret number
 6. The game will display how many attempts it took you to win
-7. You can play again by selecting another difficulty level, or exit by choosing option 4
+7. If you beat your personal best for that difficulty, it will be saved automatically
+8. Press Enter to return to the main menu
+9. You can play again by selecting another difficulty level, or exit by choosing option 4
 
 ### Example Gameplay
 
 ```
+==============================
+PocketFriends.Org      v0.2.1
+==============================
+PBs: Easy 4 | Med None | Hard None
+==============================
 Choose your difficulty.
 1. Easy (1-50)
 2. Medium (1-100)
@@ -64,6 +74,7 @@ Choose your difficulty.
 4. Exit Game
 > 2
 Guess the number!
+
 Please input your guess.
 > 50
 You guessed: 50
@@ -76,17 +87,14 @@ Please input your guess.
 > 63
 You guessed: 63
 You win, with 3 attempts!
-Choose your difficulty.
-1. Easy (1-50)
-2. Medium (1-100)
-3. Hard (1-500)
-4. Exit Game
-> 4
+
+Press Enter to return to the menu...
 ```
 
 ## Dependencies
 
 - `rand` (0.8.5) - For generating random numbers
+- `clearscreen` (4.0.3) - For clearing the terminal between screens
 
 ## Learning Resources
 
