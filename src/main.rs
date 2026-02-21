@@ -29,19 +29,19 @@ fn main() {
         };
 
         match menu_choice {
-            1 => easy(),
-            2 => medium(),
-            3 => hard(),
+            1 => game(50),
+            2 => game(100),
+            3 => game(500),
             4 => break,
             _ => println!("Please choose one of the provided options."),
         }
     }
 }
 
-fn easy() {
+fn game(diff: u32) {
    println!("Guess the number!");
 
-   let secret_number = rand::thread_rng().gen_range(1..=50);
+   let secret_number = rand::thread_rng().gen_range(1..=diff);
 
    let mut guess_amount = 0;
 
@@ -75,82 +75,4 @@ fn easy() {
     }
    }
    return;
-}
-
-fn medium() {
-   println!("Guess the number!");
-
-   let secret_number = rand::thread_rng().gen_range(1..=100);
-
-   let mut guess_amount = 0;
-
-   loop {
-    println!("Please input your guess.");
-    print!("> ");
-    io::stdout().flush().ok();
-
-    let mut guess = String::new();
-
-    io::stdin()
-       .read_line(&mut guess)
-       .expect("Failed to read line");
-
-    let guess: u32 = match guess.trim().parse() {
-        Ok(num) => num,
-        Err(_) => continue,
-    };
-
-    guess_amount += 1;
-
-    println!("You guessed: {guess}");
-
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => {
-            println!("You win, with {guess_amount} attempts!");
-            break;
-        }
-    }
-   }
-   return;
-}
-
-fn hard() {
-   println!("Guess the number!");
-
-   let secret_number = rand::thread_rng().gen_range(1..=500);
-
-   let mut guess_amount = 0;
-
-   loop {
-    println!("Please input your guess.");
-    print!("> ");
-    io::stdout().flush().ok();
-
-    let mut guess = String::new();
-
-    io::stdin()
-       .read_line(&mut guess)
-       .expect("Failed to read line");
-
-    let guess: u32 = match guess.trim().parse() {
-        Ok(num) => num,
-        Err(_) => continue,
-    };
-
-    guess_amount += 1;
-
-    println!("You guessed: {guess}");
-
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => {
-            println!("You win, with {guess_amount} attempts!");
-            break;
-        }
-    }
-   }
-   return();
 }
