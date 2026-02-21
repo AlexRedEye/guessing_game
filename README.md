@@ -2,7 +2,7 @@
 
 A classic number guessing game implemented in Rust with multiple difficulty levels and personal best tracking.
 
-> **AI Disclaimer:** All code was written by me, but this README was written by Copilot.
+> **AI Disclaimer:** All code was written by me (Excpet Save/Load PB I just wanted it to work and im still new), but this README was written by Copilot.
 
 ## About This Project
 
