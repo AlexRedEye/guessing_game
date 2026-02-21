@@ -5,6 +5,8 @@ use std::io::Write;
 use rand::Rng;
 
 fn print_menu() {
+    println!("Alex Marquez     v0.2.1");
+    println!("=======================");
     println!("Choose your difficulty.");
     println!("1. Easy (1-50)");
     println!("2. Medium (1-100)");
